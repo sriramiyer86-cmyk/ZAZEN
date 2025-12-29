@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZaZen Systems | Tectonic Brass DC Freezers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brass: {
+                dark: '#3d3429',
+                mid: '#b5a642',
+                bright: '#e8d48a',
+              },
+              bronze: '#2a1f1a',
+              obsidian: '#0d0d0d',
+              verdigris: '#43b3ae',
+              ruby: '#ff3e3e',
+            },
+            fontFamily: {
+              outfit: ['Outfit', 'sans-serif'],
+              mono: ['Space Mono', 'monospace'],
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      @keyframes reveal-tectonic {
+        from { opacity: 0; transform: translateY(40px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      @keyframes power-on {
+        0% { opacity: 0; filter: brightness(3); }
+        10% { opacity: 0.5; filter: brightness(1); }
+        15% { opacity: 0.2; }
+        20% { opacity: 1; }
+        100% { opacity: 1; }
+      }
+
+      @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+      }
+
+      @keyframes glow-breathe {
+        0%, 100% { opacity: 0.4; transform: scale(1); box-shadow: 0 0 10px rgba(67, 179, 174, 0.2); }
+        50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 25px rgba(67, 179, 174, 0.6); }
+      }
+
+      .reveal-active {
+        animation: reveal-tectonic 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .reveal-hidden {
+        opacity: 0;
+      }
+
+      .animate-power-on {
+        animation: power-on 0.8s ease-out forwards;
+      }
+
+      .animate-scanline {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(181, 166, 66, 0.4), transparent);
+        animation: scanline 3s linear infinite;
+        pointer-events: none;
+      }
+
+      .glow-status {
+        animation: glow-breathe 2s ease-in-out infinite;
+      }
+
+      .brass-gradient {
+        background: linear-gradient(180deg, #3d3429 0%, #2a1f1a 100%);
+      }
+
+      .engineering-grid {
+        background-image: radial-gradient(rgba(181, 166, 66, 0.05) 1px, transparent 0);
+        background-size: 32px 32px;
+      }
+
+      .mechanical-hover {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mechanical-hover::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%; width: 100%; height: 100%;
+        background: rgba(181, 166, 66, 0.1);
+        transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+        z-index: -1;
+      }
+
+      .mechanical-hover:hover::after {
+        transform: translateX(100%);
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #0d0d0d; }
+      ::-webkit-scrollbar-thumb { background: #b5a642; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-obsidian text-white font-outfit selection:bg-brass-mid selection:text-obsidian engineering-grid overflow-x-hidden">
+    <div id="root"></div>
+</body>
+</html>
